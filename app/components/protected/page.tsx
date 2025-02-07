@@ -4,18 +4,17 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 
-export default function ProtectedRoute({children} : {children : React.ReactNode}){
-    const router = useRouter()
+export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
+    const router = useRouter();
 
     useEffect(() => {
-        const isLoggedIn = localStorage.getItem("isLoggedIn")
-        if (!isLoggedIn) {
-            router.replace("/admin")
+        if (typeof window !== "undefined") {  // ✅ Ensure localStorage is accessed in browser
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            if (!isLoggedIn) {
+                router.push("/admin");
+            }
         }
+    }, [router]);
 
-    },[router])
-
-    return <>
-    {children}
-    </>
+    return <>{children}</>;
 }   
