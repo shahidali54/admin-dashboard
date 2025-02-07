@@ -15,7 +15,7 @@ export default function AdminLogin() {
 
     if (email === "mazari@gmail.com" && password === "mazari") {
       localStorage.setItem("isLoggedIn", "true");
-      router.push("/admin/dashboard");
+      router.replace("/admin/dashboard");
     } else {
       alert("Invalid email or password");
     }

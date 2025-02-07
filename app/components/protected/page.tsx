@@ -10,7 +10,7 @@ export default function ProtectedRoute({children} : {children : React.ReactNode}
     useEffect(() => {
         const isLoggedIn = localStorage.getItem("isLoggedIn")
         if (!isLoggedIn) {
-            router.push("/admin")
+            router.replace("/admin")
         }
 
     },[router])
