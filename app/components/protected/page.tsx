@@ -8,10 +8,10 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
     const router = useRouter();
 
     useEffect(() => {
-        if (typeof window !== "undefined") {  // ✅ Ensure localStorage is accessed in browser
+        if (typeof window !== "undefined") {  
             const isLoggedIn = localStorage.getItem("isLoggedIn");
             if (!isLoggedIn) {
-                router.push("/admin");
+                router.replace("/admin");
             }
         }
     }, [router]);
